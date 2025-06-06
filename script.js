@@ -3,7 +3,9 @@
 const API_key ="live_p21Nx9H3hwYXJy56fUAVVM6OPrgNiEVUoEhP8arnWMRYurOgAoQn7y2TXc0pHKXI";
 const divEl = document.querySelector("div");
 const catSelectEl = document.getElementById("catSelect");
-const imgEl = document.getElementById("catImg")
+const imgEl = document.getElementById("catImg");
+const imgInputEl = document.querySelector("#imgInput");
+const btn = document.getElementById("btn")
 
 const fetchData = async()=>{
     const resopnse = await fetch("https://api.thecatapi.com/v1/breeds");
@@ -14,11 +16,6 @@ const fetchData = async()=>{
         const createOption = document.createElement("option");
         createOption.textContent = breed.name;
         catSelectEl.appendChild(createOption)
-        
-        
-        // breed.addEvenLister('click', ()=>{
-            
-        // })
     })
 }
 fetchData()
@@ -35,4 +32,14 @@ catSelectEl.addEventListener('change', (e)=>{
     const selectBreedId = e.target.value;
     console.log(e.target.value)
     getImage(selectBreedId)
+})
+
+const vaildation = ()=>{
+    if(imgInputEl.value <=0 || imgInputEl.value >5){
+        alert("Must enter a number between 1-5");
+        return false;
+    }
+}
+btn.addEventListener("click", ()=>{
+    vaildation()
 })
