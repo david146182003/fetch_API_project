@@ -4,3 +4,9 @@ body{
 .divContainer{
     text-align: center;
 }
+#catImg{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
