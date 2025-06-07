@@ -7,6 +7,7 @@ const imgEl = document.getElementById("catImg");
 export const imgInputEl = document.querySelector("#imgInput");
 const btn = document.getElementById("btn")
 const infoEl = document.getElementById("divInfo")
+const infoCon= document.querySelector(".infocontainer")
 
 
 const fetchData = async()=>{
@@ -32,6 +33,7 @@ const getImage = async(breedId)=>{
     imgEl.setAttribute("src", img[0].url)
     
 }
+//setTimeout
 setTimeout(vaildation, 2000);
 
 catSelectEl.addEventListener('change', (e)=>{
@@ -52,11 +54,9 @@ btn.addEventListener("click", async()=>{
         if(inputBreed === breed.name){
             createLi.textContent = `Orgin: ${breed.orgin}`;
             infoEl.appendChild(createLi);
-            
+            body.appendChild(infoEl);
         }
     }
-    
-    
 })
 
 
