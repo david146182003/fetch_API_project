@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script defer type="module" src="script.js"></script>
+    <script type="module" src="vaildation.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="divContainer">
         <h1>Cats libary</h1>
-        <label for="imgInput">Choose how many pictures:</label>
+        <label for="imgInput">Enter breed name:</label>
         <form action="">
-            <input id="imgInput" type="text" required value="" placeholder="Please enter 1 - 5">
-            <input id="btn" type="submit" value="Go">
+            <input id="imgInput" type="text" required value="" placeholder="Enter breed name ">
+            <button id="btn">Get info</button>
         </form>
         
         <label for="catSelect">Choose a cat:</label>
@@ -21,13 +22,16 @@
             <option value="">Please choose a breed below</option>
         </select>
     </div>
-    <!-- <form action="submit">
-        <label for="">Search breeds by name:</label>
+   
+    <div class="infocontainer">
+        <div id="divImg">
+            
+            <img id="catImg" src="" alt="">
+        </div>
 
-    </form> -->
-    <div>
-        
-        <img id="catImg" src="" alt="">
+        <div id="divInfo">
+           
+        </div>
     </div>
 </body>
 </html>

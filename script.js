@@ -1,21 +1,26 @@
 
-
+import { vaildation } from "./vaildation.js";
 const API_key ="live_p21Nx9H3hwYXJy56fUAVVM6OPrgNiEVUoEhP8arnWMRYurOgAoQn7y2TXc0pHKXI";
 const divEl = document.querySelector("div");
 const catSelectEl = document.getElementById("catSelect");
 const imgEl = document.getElementById("catImg");
-const imgInputEl = document.querySelector("#imgInput");
+export const imgInputEl = document.querySelector("#imgInput");
 const btn = document.getElementById("btn")
+const infoEl = document.getElementById("divInfo")
+
 
 const fetchData = async()=>{
+
     const resopnse = await fetch("https://api.thecatapi.com/v1/breeds");
     const data = await resopnse.json();
-    console.log(data)
+    console.log(data);
     
     data.forEach(breed =>{
+      
         const createOption = document.createElement("option");
         createOption.textContent = breed.name;
-        catSelectEl.appendChild(createOption)
+        catSelectEl.appendChild(createOption);
+      
     })
 }
 fetchData()
@@ -27,6 +32,7 @@ const getImage = async(breedId)=>{
     imgEl.setAttribute("src", img[0].url)
     
 }
+setTimeout(vaildation, 2000);
 
 catSelectEl.addEventListener('change', (e)=>{
     const selectBreedId = e.target.value;
@@ -34,12 +40,25 @@ catSelectEl.addEventListener('change', (e)=>{
     getImage(selectBreedId)
 })
 
-const vaildation = ()=>{
-    if(imgInputEl.value <=0 || imgInputEl.value >5){
-        alert("Must enter a number between 1-5");
-        return false;
-    }
-}
-btn.addEventListener("click", ()=>{
+
+btn.addEventListener("click", async()=>{
     vaildation()
+    const inputBreed = imgInputEl.value;
+    console.log(inputBreed)
+    const resopnse = await fetch("https://api.thecatapi.com/v1/breeds");
+    const data = await resopnse.json();
+    const createLi = document.createElement('p')
+    for(let breed of data){
+        if(inputBreed === breed.name){
+            createLi.textContent = `Orgin: ${breed.orgin}`;
+            infoEl.appendChild(createLi);
+            
+        }
+    }
+    
+    
 })
+
+
+
+ 
